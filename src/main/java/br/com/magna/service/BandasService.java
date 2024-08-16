@@ -1,5 +1,9 @@
  package br.com.magna.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import br.com.magna.dto.JsonResponse;
@@ -37,6 +41,35 @@ public class BandasService {
 		bandas.atualizacaoCadastroBanda(dados);
 		
 		return new BandasRetornoDTO(bandas);
+	}
+	
+	public List<BandasRetornoDTO> getBandas() {
+		var bandas = repository.findAll();
+		List<BandasRetornoDTO> dtos = new ArrayList<>();
+		for(Bandas banda : bandas) {
+			BandasRetornoDTO dto = new BandasRetornoDTO(banda);
+			dtos.add(dto);
+		}
+		return dtos;
+		
+	}
+	
+	public BandasRetornoDTO getBandaById(Long id) {
+		Optional<Bandas> bandasOptional = repository.findById(id);
+		if(bandasOptional.isPresent()) {
+			Bandas bandas = bandasOptional.get();
+			return new BandasRetornoDTO(bandas);
+		}
+		throw new BandaNotFoundException("Não foi encontrada banda com a ID digitada");
+	}
+	
+	public BandasRetornoDTO findBandaByNome(String nome) {
+		Optional<Bandas> bandasOptional = repository.findBandaByNome(nome);
+		if(bandasOptional.isPresent()) {
+			Bandas bandas = bandasOptional.get();
+			return new BandasRetornoDTO(bandas);
+		}
+		throw new BandaNotFoundException("Não foi encontrada banda com o nome digitado");
 	}
 	
 }

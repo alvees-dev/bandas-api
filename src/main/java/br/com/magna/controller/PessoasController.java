@@ -59,7 +59,7 @@ public class PessoasController {
 
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("id/{id}")
 	public ResponseEntity<PessoasRetornoDTO> listarPessoaPorId(@PathVariable Long id) {
 		return ResponseEntity.ok(service.getByIdPessoa(id));
 	}
