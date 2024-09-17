@@ -39,6 +39,7 @@ public class PessoasController {
 	}
 
 	@DeleteMapping("/{id}")
+	@Transactional
 	public ResponseEntity<JsonResponse> deletarPessoa(@PathVariable Long id) {
 		var delete = service.deletePessoa(id);
 		return ResponseEntity.status(HttpStatus.OK).body(delete);

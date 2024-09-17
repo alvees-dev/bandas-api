@@ -41,6 +41,7 @@ public class BandasController {
 	}
 
 	@DeleteMapping("/{id}")
+	@Transactional
 	public ResponseEntity<JsonResponse> deletarBandas(@PathVariable Long id) {
 
 		var delete = service.deleteBanda(id);
@@ -49,6 +50,7 @@ public class BandasController {
 	}
 
 	@PutMapping("/atualizarBanda/{id}")
+	@Transactional
 	public ResponseEntity<BandasRetornoDTO> atualizarBanda(@PathVariable Long id,
 			@RequestBody @Valid BandaAtualizacaoDTO dados) {
 		var banda = service.atualizarBandas(id, dados);
