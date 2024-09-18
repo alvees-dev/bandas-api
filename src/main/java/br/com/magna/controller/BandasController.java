@@ -43,9 +43,8 @@ public class BandasController {
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity<JsonResponse> deletarBandas(@PathVariable Long id) {
-
-		var delete = service.deleteBanda(id);
-		return ResponseEntity.status(HttpStatus.OK).body(delete);
+		service.deleteBanda(id);
+		return ResponseEntity.noContent().build();
 
 	}
 
@@ -53,8 +52,8 @@ public class BandasController {
 	@Transactional
 	public ResponseEntity<BandasRetornoDTO> atualizarBanda(@PathVariable Long id,
 			@RequestBody @Valid BandaAtualizacaoDTO dados) {
-		var banda = service.atualizarBandas(id, dados);
-		return ResponseEntity.status(HttpStatus.OK).body(banda);
+		service.atualizarBandas(id, dados);
+		return ResponseEntity.noContent().build();
 
 	}
 
@@ -69,7 +68,7 @@ public class BandasController {
 		return ResponseEntity.ok(service.getBandaById(id));
 
 	}
-	
+
 	@GetMapping("nome/{nome}")
 	public ResponseEntity<BandasRetornoDTO> getBandaByNome(@PathVariable String nome) {
 		return ResponseEntity.ok(service.findBandaByNome(nome));

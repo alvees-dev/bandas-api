@@ -41,17 +41,16 @@ public class PessoasController {
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity<JsonResponse> deletarPessoa(@PathVariable Long id) {
-		var delete = service.deletePessoa(id);
-		return ResponseEntity.status(HttpStatus.OK).body(delete);
+		service.deletePessoa(id);
+		return ResponseEntity.noContent().build();
 
 	}
 	
 	@PutMapping("/atualizarPessoa/{id}")
 	@Transactional
 	public ResponseEntity<PessoasRetornoDTO>AtualizarPessoa(@PathVariable Long id, @RequestBody @Valid PessoasAtualizacaoDTO dados) {
-		var pessoa = service.updatePessoa(id, dados);
-        return ResponseEntity.status(HttpStatus.OK).body(pessoa);
-		
+		service.updatePessoa(id, dados);
+		return ResponseEntity.noContent().build();
 	}
 
 	@GetMapping
