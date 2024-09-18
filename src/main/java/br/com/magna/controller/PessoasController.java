@@ -49,8 +49,9 @@ public class PessoasController {
 	@PutMapping("/atualizarPessoa/{id}")
 	@Transactional
 	public ResponseEntity<PessoasRetornoDTO>AtualizarPessoa(@PathVariable Long id, @RequestBody @Valid PessoasAtualizacaoDTO dados) {
-		service.updatePessoa(id, dados);
-		return ResponseEntity.noContent().build();
+		var pessoa = service.updatePessoa(id, dados);
+        return ResponseEntity.status(HttpStatus.OK).body(pessoa);
+		
 	}
 
 	@GetMapping

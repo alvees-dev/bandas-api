@@ -3,6 +3,7 @@ package br.com.magna.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,8 +53,8 @@ public class BandasController {
 	@Transactional
 	public ResponseEntity<BandasRetornoDTO> atualizarBanda(@PathVariable Long id,
 			@RequestBody @Valid BandaAtualizacaoDTO dados) {
-		service.atualizarBandas(id, dados);
-		return ResponseEntity.noContent().build();
+		var banda = service.atualizarBandas(id, dados);
+		return ResponseEntity.status(HttpStatus.OK).body(banda);
 
 	}
 
@@ -68,7 +69,7 @@ public class BandasController {
 		return ResponseEntity.ok(service.getBandaById(id));
 
 	}
-
+	
 	@GetMapping("nome/{nome}")
 	public ResponseEntity<BandasRetornoDTO> getBandaByNome(@PathVariable String nome) {
 		return ResponseEntity.ok(service.findBandaByNome(nome));
