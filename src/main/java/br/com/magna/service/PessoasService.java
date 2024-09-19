@@ -19,7 +19,7 @@ public class PessoasService {
 
 	private final Pessoas pessoa;
 	public final PessoasRepository repository;
-	
+
 	public PessoasService(PessoasRepository repository) {
 		this.pessoa = new Pessoas();
 		this.repository = repository;
@@ -38,28 +38,32 @@ public class PessoasService {
 	}
 
 	public PessoasRetornoDTO updatePessoa(Long id, PessoasAtualizacaoDTO dados) {
-		
-		var pessoa = repository.findById(id).orElseThrow(() ->  new PessoaNotFoundException("Não foi encontrada uma pessoa com essa ID."));
+
+		var pessoa = repository.findById(id)
+				.orElseThrow(() -> new PessoaNotFoundException("Não foi encontrada uma pessoa com essa ID."));
 		pessoa.atualizacaoCadastroPessoa(dados);
-		
+
 		return new PessoasRetornoDTO(pessoa);
 
 	}
-	
+
 	public List<PessoasRetornoDTO> getPessoas() {
 		var pessoas = repository.findAll();
 		List<PessoasRetornoDTO> dtos = new ArrayList<>();
-		for(Pessoas pessoa : pessoas) {
-			PessoasRetornoDTO dto = new PessoasRetornoDTO(pessoa);
-			dtos.add(dto);
+		if (!pessoas.isEmpty()) {
+			for (Pessoas pessoa : pessoas) {
+				PessoasRetornoDTO dto = new PessoasRetornoDTO(pessoa);
+				dtos.add(dto);
+			}
+
+			return dtos;
 		}
-		
-		return dtos;
+		throw new PessoaNotFoundException("Não foram encontradas pessoas cadastradas");
 	}
 
 	public PessoasRetornoDTO getByIdPessoa(Long id) {
 		Optional<Pessoas> pessoaOptional = repository.findById(id);
-		if(pessoaOptional.isPresent()) {
+		if (pessoaOptional.isPresent()) {
 			Pessoas pessoa = pessoaOptional.get();
 			return new PessoasRetornoDTO(pessoa);
 		}
@@ -68,27 +72,11 @@ public class PessoasService {
 
 	public PessoasRetornoDTO getPessoaByNome(String nome) {
 		Optional<Pessoas> pessoaOptional = repository.findByNome(nome);
-		if(pessoaOptional.isPresent()) {
+		if (pessoaOptional.isPresent()) {
 			Pessoas pessoa = pessoaOptional.get();
 			return new PessoasRetornoDTO(pessoa);
 		}
 		throw new PessoaNotFoundException("Não foi encontrada uma Pessoa com esse Nome.");
 	}
-	
-//	public List<PessoasRetornoDTO> getPessoasByNomeParcial(String nomeParcial) {
-//		Optional<List<Pessoas>> pessoasOptional = repository.findAllByNomeStartingWith(nomeParcial);
-//		List<PessoasRetornoDTO> dtos = new ArrayList<>();
-//		
-//		for(List<Pessoas> pessoaOptional : pessoasOptional) {
-//			if(pessoaOptional.isPresent()) {
-//			PessoasRetornoDTO dto = new PessoasRetornoDTO(pessoa);
-//			dtos.add(dto);
-//			}
-//		}
-//		
-//			
-//		
-//		return dtos;
-//		
-//	}
+
 }
