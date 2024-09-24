@@ -14,23 +14,32 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(PessoaNotFoundException.class)
 	public ResponseEntity<Object> handlePessoaNotFoundException(PessoaNotFoundException pnfe) {
-		String erro = pnfe.getMessage();
+		String error = pnfe.getMessage();
 
-		return new ResponseEntity<>(new JsonResponse(erro), HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(new JsonResponse(error), HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(BandaNotFoundException.class)
 	public ResponseEntity<Object> handleBandaNotFoundException(BandaNotFoundException bnfe) {
-		String erro = bnfe.getMessage();
+		String error = bnfe.getMessage();
 
-		return new ResponseEntity<>(new JsonResponse(erro), HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(new JsonResponse(error), HttpStatus.NOT_FOUND);
 	}
 
+	@ExceptionHandler(ShowNotFoundException.class)
+	public ResponseEntity<Object> handleShowNotFoundException(ShowNotFoundException snfe) {
+		String error = snfe.getMessage();
+		
+		return new ResponseEntity<>(new JsonResponse(error), HttpStatus.NOT_FOUND);
+	}
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<Object> tratarErro400(MethodArgumentNotValidException ex) {
 		var erros = ex.getFieldErrors();
 		return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
 	}
+	
+	
 
 	private record DadosErroValidacao(String campo, String mensagem) {
 		
