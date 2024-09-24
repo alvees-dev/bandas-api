@@ -38,7 +38,7 @@ public class ShowsService {
 				.orElseThrow(() -> new ShowNotFoundException("Não foi encontrado Show com a Id digitada"));
 		shows.atualizacaoShows(dados);
 		
-		return new ShowsRetornoDTO(shows);
+		return new ShowsRetornoDTO(show);
 	}
 	
 	
