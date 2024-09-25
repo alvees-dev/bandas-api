@@ -11,9 +11,6 @@ import br.com.magna.model.Pessoas;
 @Repository
 public interface PessoasRepository  extends JpaRepository<Pessoas, Long>{
 	
-	Optional<Pessoas> findByNome(String nome);
-	
-	//Optional<List<Pessoas>> findAllByNomeStartingWith(String nomePrefixo);
-	
+	Optional<Pessoas> findByNome(String nome);	
 
 }

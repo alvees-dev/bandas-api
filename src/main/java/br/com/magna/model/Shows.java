@@ -2,10 +2,8 @@ package br.com.magna.model;
 
 import java.time.LocalDate;
 
-import br.com.magna.dto.endereco.Endereco;
 import br.com.magna.dto.shows.ShowsAgendaDTO;
 import br.com.magna.dto.shows.ShowsAtualizacaoDTO;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +21,8 @@ public class Shows {
 	LocalDate dataInicio;
 	LocalDate dataTermino;
 
-	@Embedded
-	Endereco endereco;
+//	@Embedded
+//	Endereco endereco;
 
 	public Shows() {
 
@@ -34,7 +32,7 @@ public class Shows {
 		this.nome = dados.nome();
 		this.dataInicio = dados.dataInicio();
 		this.dataTermino = dados.dataTermino();
-		this.endereco = new Endereco(dados.endereco());
+		//this.endereco = new Endereco(dados.endereco());
 
 	}
 	
@@ -48,9 +46,9 @@ public class Shows {
 		if (dados.dataTermino() != null) {
 			this.dataTermino = dados.dataTermino();
 		}
-		if (dados.endereco() != null) {
-			this.endereco.atualizarEndereco(dados.endereco());
-		}
+//		if (dados.endereco() != null) {
+//			this.endereco.atualizarEndereco(dados.endereco());
+//		}
 	}
 
 	public Long getId() {
@@ -69,9 +67,9 @@ public class Shows {
 		return dataTermino;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
+//	public Endereco getEndereco() {
+//		return endereco;
+//	}
 	
 	
 

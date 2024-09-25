@@ -2,11 +2,8 @@ package br.com.magna.dto.shows;
 
 import java.time.LocalDate;
 
-import br.com.magna.dto.endereco.DadosEndereco;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public record ShowsAgendaDTO (
 		
@@ -19,11 +16,11 @@ public record ShowsAgendaDTO (
 		
 		@NotBlank
 		@Future(message = "A data de término não pode ser passado ou presente")
-		LocalDate dataTermino,
+		LocalDate dataTermino
 		
-		@NotNull
-		@Valid
-		DadosEndereco endereco
+//		@NotNull
+//		@Valid
+//		DadosEndereco endereco
 		){
 
 }
