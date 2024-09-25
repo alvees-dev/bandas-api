@@ -1,9 +1,11 @@
 package br.com.magna.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -50,5 +52,21 @@ public class ShowsController {
 		var shows = service.updateShow(id, dados);
 		return ResponseEntity.status(HttpStatus.OK).body(shows);
 	}
+	
+	@GetMapping
+	public ResponseEntity<List<ShowsRetornoDTO>> getShow() {
+		return ResponseEntity.ok(service.findShows());	
+	}
+	
+	@GetMapping("id/{id}")
+	public ResponseEntity<ShowsRetornoDTO> getShowById(@PathVariable Long id) {
+		return ResponseEntity.ok(service.findShowById(id));
+	}
+	
+	@GetMapping("nome/{nome}")
+	public ResponseEntity<ShowsRetornoDTO> getShowByNome(@PathVariable String nome) {
+		return ResponseEntity.ok(service.findShowByNome(nome));
+	}
+	
 
 }
