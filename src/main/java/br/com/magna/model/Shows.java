@@ -17,12 +17,10 @@ public class Shows {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	String nome;
-	LocalDate dataInicio;
-	LocalDate dataTermino;
-
-//	@Embedded
-//	Endereco endereco;
+	private String nome;
+	private LocalDate dataInicio;
+	private LocalDate dataTermino;
+	private String endereco;
 
 	public Shows() {
 
@@ -32,12 +30,12 @@ public class Shows {
 		this.nome = dados.nome();
 		this.dataInicio = dados.dataInicio();
 		this.dataTermino = dados.dataTermino();
-		//this.endereco = new Endereco(dados.endereco());
+		this.endereco = dados.endereco();
 
 	}
-	
+
 	public void atualizacaoShows(ShowsAtualizacaoDTO dados) {
-		if(dados.nome() != null) {
+		if (dados.nome() != null) {
 			this.nome = dados.nome();
 		}
 		if (dados.dataInicio() != null) {
@@ -46,9 +44,9 @@ public class Shows {
 		if (dados.dataTermino() != null) {
 			this.dataTermino = dados.dataTermino();
 		}
-//		if (dados.endereco() != null) {
-//			this.endereco.atualizarEndereco(dados.endereco());
-//		}
+		if (dados.endereco() != null) {
+			this.endereco = dados.endereco();
+		}
 	}
 
 	public Long getId() {
@@ -67,10 +65,8 @@ public class Shows {
 		return dataTermino;
 	}
 
-//	public Endereco getEndereco() {
-//		return endereco;
-//	}
-	
-	
+	public String getEndereco() {
+		return endereco;
+	}
 
 }

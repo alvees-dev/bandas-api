@@ -15,8 +15,9 @@ public record ShowsRetornoDTO(
 		LocalDate dataInicio,
 		
 		@JsonFormat(pattern = "dd-mm-yyyy") 
-		LocalDate dataTermino 
-		//Endereco endereco
+		LocalDate dataTermino,
+		
+		String endereco
 
 ) {
 
@@ -24,8 +25,8 @@ public record ShowsRetornoDTO(
 		this(shows.getId(), 
 			 shows.getNome(), 
 			 shows.getDataInicio(), 
-			 shows.getDataTermino()); 
-			 //shows.getEndereco());
+			 shows.getDataTermino(), 
+			 shows.getEndereco());
 	}
 
 }

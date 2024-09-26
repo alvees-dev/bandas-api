@@ -16,7 +16,6 @@ public record PessoasCadastroDTO(
 		String email, 
 		
 		@PastOrPresent(message = "A data de nascimento não deve ser futura ou presente")
-		//@JsonFormat(pattern = "yyyy-MM-dd")
 		LocalDate dataNascimento, 
 		
 		@NotBlank(message = "O país de nascimento não pode estar vazio")

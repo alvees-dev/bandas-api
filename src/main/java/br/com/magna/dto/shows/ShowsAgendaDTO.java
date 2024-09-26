@@ -4,23 +4,23 @@ import java.time.LocalDate;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record ShowsAgendaDTO (
 		
 		@NotBlank(message = "O nome do show/turnê deve ser informado")
 		String nome,
 		
-		@NotBlank
+		@NotNull
 		@Future(message = "A data não pode ser passado ou presente")
 		LocalDate dataInicio,
 		
-		@NotBlank
+		@NotNull
 		@Future(message = "A data de término não pode ser passado ou presente")
-		LocalDate dataTermino
+		LocalDate dataTermino,
 		
-//		@NotNull
-//		@Valid
-//		DadosEndereco endereco
+		@NotBlank(message = "O endereço não pode estar vazio")
+		String endereco
 		){
 
 }

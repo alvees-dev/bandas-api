@@ -33,10 +33,9 @@ public class ShowsController {
 
 	@PostMapping
 	@Transactional
-	public ResponseEntity<ShowsRetornoDTO> Show(@RequestBody @Valid ShowsAgendaDTO dados) {
-
-		var agendarShow = service.agendarShow(dados);
-		return ResponseEntity.status(HttpStatus.CREATED).body(agendarShow);
+	public ResponseEntity<ShowsRetornoDTO> agendamentoDeShow(@RequestBody @Valid ShowsAgendaDTO dados) {
+		var agendaShow = service.agendarShow(dados);
+		return ResponseEntity.status(HttpStatus.CREATED).body(agendaShow);
 	}
 
 	@DeleteMapping("/{id}")

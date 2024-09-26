@@ -7,8 +7,8 @@ public record ShowsAtualizacaoDTO(
 		Long id,
 		String nome,
 		LocalDate dataInicio,
-		LocalDate dataTermino
-		//DadosEndereco endereco
+		LocalDate dataTermino,
+		String endereco
 		
 		
 		) {
