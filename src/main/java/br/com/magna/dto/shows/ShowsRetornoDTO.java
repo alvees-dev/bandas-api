@@ -11,10 +11,10 @@ public record ShowsRetornoDTO(
 		Long id, 
 		String nome,
 
-		@JsonFormat(pattern = "dd-mm-yyyy") 
+		@JsonFormat(pattern = "dd-MM-yyyy") 
 		LocalDate dataInicio,
 		
-		@JsonFormat(pattern = "dd-mm-yyyy") 
+		@JsonFormat(pattern = "dd-MM-yyyy") 
 		LocalDate dataTermino,
 		
 		String endereco
