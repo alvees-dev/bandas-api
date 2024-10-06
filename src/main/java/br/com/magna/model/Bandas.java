@@ -16,7 +16,7 @@ public class Bandas {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
+	private Long IdBandas;
 	private String nome;
 	private String generoMusical;
 	private LocalDate dataCriacao;
@@ -46,11 +46,10 @@ public class Bandas {
 			this.paisOrigem = dados.paisOrigem();
 		}
 		
-		
 	}
 
-	public Long getId() {
-		return Id;
+	public Long getIdBandas() {
+		return IdBandas;
 	}
 
 	public String getNome() {

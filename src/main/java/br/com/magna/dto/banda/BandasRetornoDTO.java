@@ -13,7 +13,7 @@ public record BandasRetornoDTO(
 		String paisOrigem) {
 	
 	public BandasRetornoDTO(Bandas bandas) {
-		this(bandas.getId(), 
+		this(bandas.getIdBandas(), 
 			 bandas.getNome(), 
 			 bandas.getGeneroMusical(), 
 			 bandas.getDataCriacao(), 

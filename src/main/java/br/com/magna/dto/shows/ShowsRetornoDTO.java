@@ -22,7 +22,7 @@ public record ShowsRetornoDTO(
 ) {
 
 	public ShowsRetornoDTO(Shows shows) {
-		this(shows.getId(), 
+		this(shows.getIdShows(), 
 			 shows.getNome(), 
 			 shows.getDataInicio(), 
 			 shows.getDataTermino(), 

@@ -16,7 +16,7 @@ public class Shows {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idShows;
 	private String nome;
 	private LocalDate dataInicio;
 	private LocalDate dataTermino;
@@ -49,8 +49,8 @@ public class Shows {
 		}
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIdShows() {
+		return idShows;
 	}
 
 	public String getNome() {
