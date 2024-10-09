@@ -19,7 +19,7 @@ public record PessoasRetornoDTO(
 		 {
 	
 	 public PessoasRetornoDTO(Pessoas pessoas) {
-		 this(pessoas.getId(),
+		 this(pessoas.getIdPessoa(),
 		      pessoas.getNome(),
 		      pessoas.getEmail(),
 		      pessoas.getDataNascimento(),

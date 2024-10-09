@@ -25,7 +25,7 @@ public class ShowBandaController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity<ShowBandaRetornoDTO> vincularShowBanda(@RequestBody @Valid ShowBandaVinculacaoDTO dados) {
-		var dto = service.vincular(dados);
+		var dto = service.vincularShowsBandas(dados);
 		return ResponseEntity.ok(dto);
 	}
 
