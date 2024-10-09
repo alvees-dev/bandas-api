@@ -6,7 +6,7 @@ public record IntegrantesRetornoDTO(
 		
 		Long id,
 		Long idPessoa,
-		Long idBanda,
+		Long idBandas,
 		String funcao
 		) {
 	

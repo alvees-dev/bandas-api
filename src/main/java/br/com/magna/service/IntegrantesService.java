@@ -27,7 +27,7 @@ public class IntegrantesService {
 
 	public IntegrantesRetornoDTO vincularIntegrante(IntegrantesVinculacaoDTO dados) {
 
-		var optionalBanda = bandasRepository.findById(dados.idBanda());
+		var optionalBanda = bandasRepository.findById(dados.idBandas());
 		if (optionalBanda.isEmpty()) {
 			throw new BandaNotFoundException("Banda não encontrada");
 		}
@@ -39,7 +39,8 @@ public class IntegrantesService {
 
 		var banda = optionalBanda.get();
 		var pessoa = optionalPessoa.get();
-		var integrantes = new Integrantes(null, banda, pessoa, null);
+		var funcao = dados.funcao();
+		var integrantes = new Integrantes(null, banda, pessoa, funcao);
 		integrantesRepository.save(integrantes);
 
 		return new IntegrantesRetornoDTO(integrantes);
