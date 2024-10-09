@@ -3,6 +3,7 @@ package br.com.magna.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.magna.dto.integrantes.IntegrantesRetornoDTO;
@@ -11,6 +12,7 @@ import br.com.magna.service.IntegrantesService;
 import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping("/integrantes")
 public class IntegrantesController {
 
 	private final IntegrantesService service;
