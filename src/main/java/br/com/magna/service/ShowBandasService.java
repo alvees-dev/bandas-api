@@ -24,7 +24,7 @@ public class ShowBandasService {
 		this.showBandaRepository = showBandaRepo;
 	}
 	
-	public ShowBandaRetornoDTO vincular(ShowBandaVinculacaoDTO dados) {
+	public ShowBandaRetornoDTO vincularShowsBandas(ShowBandaVinculacaoDTO dados) {
 		
 		var optionalShow = showRepository.findById(dados.idShows());
 	    if (optionalShow.isEmpty()) {
