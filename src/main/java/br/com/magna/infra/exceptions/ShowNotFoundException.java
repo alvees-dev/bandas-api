@@ -1,4 +1,4 @@
-package br.com.magna.exceptions;
+package br.com.magna.infra.exceptions;
 
 public class ShowNotFoundException extends RuntimeException{
 	

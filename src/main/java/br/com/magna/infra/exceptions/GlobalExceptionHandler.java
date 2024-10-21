@@ -1,4 +1,4 @@
-package br.com.magna.exceptions;
+package br.com.magna.infra.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
