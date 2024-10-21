@@ -10,7 +10,7 @@ import br.com.magna.dto.JsonResponse;
 import br.com.magna.dto.banda.BandaAtualizacaoDTO;
 import br.com.magna.dto.banda.BandasCadastroDTO;
 import br.com.magna.dto.banda.BandasRetornoDTO;
-import br.com.magna.exceptions.BandaNotFoundException;
+import br.com.magna.infra.exceptions.BandaNotFoundException;
 import br.com.magna.model.Bandas;
 import br.com.magna.repository.BandasRepository;
 

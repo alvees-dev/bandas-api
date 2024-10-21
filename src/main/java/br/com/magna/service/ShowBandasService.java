@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.magna.dto.showBanda.ShowBandaRetornoDTO;
 import br.com.magna.dto.showBanda.ShowBandaVinculacaoDTO;
-import br.com.magna.exceptions.BandaNotFoundException;
-import br.com.magna.exceptions.ShowNotFoundException;
+import br.com.magna.infra.exceptions.BandaNotFoundException;
+import br.com.magna.infra.exceptions.ShowNotFoundException;
 import br.com.magna.model.ShowBandas;
 import br.com.magna.repository.BandasRepository;
 import br.com.magna.repository.ShowBandaRepository;

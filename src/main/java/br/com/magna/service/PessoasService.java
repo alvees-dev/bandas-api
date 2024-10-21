@@ -10,7 +10,7 @@ import br.com.magna.dto.JsonResponse;
 import br.com.magna.dto.pessoa.PessoasAtualizacaoDTO;
 import br.com.magna.dto.pessoa.PessoasCadastroDTO;
 import br.com.magna.dto.pessoa.PessoasRetornoDTO;
-import br.com.magna.exceptions.PessoaNotFoundException;
+import br.com.magna.infra.exceptions.PessoaNotFoundException;
 import br.com.magna.model.Pessoas;
 import br.com.magna.repository.PessoasRepository;
 
