@@ -33,6 +33,13 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(new JsonResponse(error), HttpStatus.NOT_FOUND);
 	}
 	
+	@ExceptionHandler(DataTerminoAntesDataInicio.class)
+	public ResponseEntity<Object> handleDataTerminoAntesDataInicio(DataTerminoAntesDataInicio dtadi) {
+		String error = dtadi.getMessage();
+		
+		return new ResponseEntity<>(new JsonResponse(error), HttpStatus.BAD_REQUEST);
+	}
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<Object> tratarErro400(MethodArgumentNotValidException ex) {
 		var erros = ex.getFieldErrors();
