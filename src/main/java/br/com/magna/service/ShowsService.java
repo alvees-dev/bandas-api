@@ -11,6 +11,7 @@ import br.com.magna.dto.shows.ShowsAgendaDTO;
 import br.com.magna.dto.shows.ShowsAtualizacaoDTO;
 import br.com.magna.dto.shows.ShowsRetornoDTO;
 import br.com.magna.exceptions.BandaNotFoundException;
+import br.com.magna.exceptions.DataTerminoAntesDataInicio;
 import br.com.magna.exceptions.ShowNotFoundException;
 import br.com.magna.model.Shows;
 import br.com.magna.repository.ShowsRepository;
@@ -28,8 +29,12 @@ public class ShowsService {
 	
 	public ShowsRetornoDTO agendarShow(ShowsAgendaDTO dados) {
 		Shows shows = new Shows(dados);
+		
+		if(shows.getDataInicio().isBefore(shows.getDataTermino())) {
 		repository.save(shows);
 		return new ShowsRetornoDTO(shows);
+		}
+		throw new DataTerminoAntesDataInicio("A data término não pode estar antes da data de início");
 	}
 	
 	public JsonResponse deleteShows(Long id) {
