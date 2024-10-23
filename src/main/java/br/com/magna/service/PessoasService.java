@@ -17,52 +17,48 @@ import br.com.magna.repository.PessoasRepository;
 @Service
 public class PessoasService {
 
-	private final Pessoas pessoa;
-	public final PessoasRepository repository;
+	public final PessoasRepository pessoaRepository;
 
 	public PessoasService(PessoasRepository repository) {
-		this.pessoa = new Pessoas();
-		this.repository = repository;
+		this.pessoaRepository = repository;
 	}
 
 	public PessoasRetornoDTO createPessoa(PessoasCadastroDTO dados) {
 		var pessoa = new Pessoas(dados);
-		repository.save(pessoa);
+		pessoaRepository.save(pessoa);
+		
 		return new PessoasRetornoDTO(pessoa);
-
 	}
 
 	public JsonResponse deletePessoa(Long id) {
-		repository.deleteById(id);
+		pessoaRepository.deleteById(id);
 		return new JsonResponse("A pessoa com o id " + id + " foi deletada com sucesso!");
 	}
 
 	public PessoasRetornoDTO updatePessoa(Long id, PessoasAtualizacaoDTO dados) {
 
-		var pessoa = repository.findById(id)
+		var pessoa = pessoaRepository.findById(id)
 				.orElseThrow(() -> new PessoaNotFoundException("Não foi encontrada uma pessoa com essa ID."));
 		pessoa.atualizacaoCadastroPessoa(dados);
 
 		return new PessoasRetornoDTO(pessoa);
-
 	}
 
 	public List<PessoasRetornoDTO> getPessoas() {
-		var pessoas = repository.findAll();
+		var pessoas = pessoaRepository.findAll();
 		List<PessoasRetornoDTO> dtos = new ArrayList<>();
 		if (!pessoas.isEmpty()) {
 			for (Pessoas pessoa : pessoas) {
 				PessoasRetornoDTO dto = new PessoasRetornoDTO(pessoa);
 				dtos.add(dto);
 			}
-
 			return dtos;
 		}
 		throw new PessoaNotFoundException("Não foram encontradas pessoas cadastradas");
 	}
 
 	public PessoasRetornoDTO getByIdPessoa(Long id) {
-		Optional<Pessoas> pessoaOptional = repository.findById(id);
+		Optional<Pessoas> pessoaOptional = pessoaRepository.findById(id);
 		if (pessoaOptional.isPresent()) {
 			Pessoas pessoa = pessoaOptional.get();
 			return new PessoasRetornoDTO(pessoa);
@@ -71,7 +67,7 @@ public class PessoasService {
 	}
 
 	public PessoasRetornoDTO getPessoaByNome(String nome) {
-		Optional<Pessoas> pessoaOptional = repository.findByNome(nome);
+		Optional<Pessoas> pessoaOptional = pessoaRepository.findByNome(nome);
 		if (pessoaOptional.isPresent()) {
 			Pessoas pessoa = pessoaOptional.get();
 			return new PessoasRetornoDTO(pessoa);

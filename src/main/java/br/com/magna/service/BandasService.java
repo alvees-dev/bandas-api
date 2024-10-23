@@ -36,7 +36,6 @@ public class BandasService {
 	}
 
 	public BandasRetornoDTO atualizarBandas(Long id, BandaAtualizacaoDTO dados) {
-
 		var bandas = repository.findById(id)
 				.orElseThrow(() -> new BandaNotFoundException("Não foi possível encontrar uma Banda com este id!"));
 		bandas.atualizacaoCadastroBanda(dados);

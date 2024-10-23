@@ -43,21 +43,19 @@ public class PessoasController {
 	public ResponseEntity<JsonResponse> deletarPessoa(@PathVariable Long id) {
 		service.deletePessoa(id);
 		return ResponseEntity.noContent().build();
-
 	}
-	
+
 	@PutMapping("/atualizarPessoa/{id}")
 	@Transactional
-	public ResponseEntity<PessoasRetornoDTO>AtualizarPessoa(@PathVariable Long id, @RequestBody @Valid PessoasAtualizacaoDTO dados) {
+	public ResponseEntity<PessoasRetornoDTO> AtualizarPessoa(@PathVariable Long id,
+			@RequestBody @Valid PessoasAtualizacaoDTO dados) {
 		var pessoa = service.updatePessoa(id, dados);
-        return ResponseEntity.status(HttpStatus.OK).body(pessoa);
-		
+		return ResponseEntity.status(HttpStatus.OK).body(pessoa);
 	}
 
 	@GetMapping
 	public ResponseEntity<List<PessoasRetornoDTO>> listarPessoas() {
 		return ResponseEntity.ok(service.getPessoas());
-
 	}
 
 	@GetMapping("id/{id}")
@@ -66,7 +64,7 @@ public class PessoasController {
 	}
 
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<PessoasRetornoDTO> listarPessoaPorNome(@PathVariable String nome) { 
+	public ResponseEntity<PessoasRetornoDTO> listarPessoaPorNome(@PathVariable String nome) {
 		return ResponseEntity.ok(service.getPessoaByNome(nome));
 	}
 }

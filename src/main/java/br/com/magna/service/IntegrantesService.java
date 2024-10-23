@@ -2,6 +2,7 @@ package br.com.magna.service;
 
 import org.springframework.stereotype.Service;
 
+import br.com.magna.dto.JsonResponse;
 import br.com.magna.dto.integrantes.IntegrantesRetornoDTO;
 import br.com.magna.dto.integrantes.IntegrantesVinculacaoDTO;
 import br.com.magna.infra.exceptions.BandaNotFoundException;
@@ -44,6 +45,11 @@ public class IntegrantesService {
 		integrantesRepository.save(integrantes);
 
 		return new IntegrantesRetornoDTO(integrantes);
+	}
+	
+	public JsonResponse deletarVinculacaoIntegrante(Long id) {
+		integrantesRepository.deleteById(id);
+		return new JsonResponse("A vinculação foi desfeita com sucesso");
 	}
 
 }

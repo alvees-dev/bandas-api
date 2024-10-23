@@ -1,7 +1,9 @@
 package br.com.magna.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import br.com.magna.dto.JsonResponse;
 import br.com.magna.dto.showBanda.ShowBandaRetornoDTO;
 import br.com.magna.dto.showBanda.ShowBandaVinculacaoDTO;
 import br.com.magna.infra.exceptions.BandaNotFoundException;
@@ -43,5 +45,10 @@ public class ShowBandasService {
 	    
 	    return new ShowBandaRetornoDTO(showBanda);
  	}
+	
+	public JsonResponse cancelShowVinculation(@PathVariable Long id) {
+		showBandaRepository.deleteById(id);
+		return new JsonResponse("Vinculação do Show desfeita com sucesso");
+	}
 
 }
